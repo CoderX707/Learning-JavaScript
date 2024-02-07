@@ -49,6 +49,8 @@ console.log(isPalindrome("hello")); // false
 
 // ********************************************************************************************
 
+// Reverse Vowels in JavaScript
+
 function reverseVowels(str) {
   const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
   let left = 0;
@@ -75,15 +77,17 @@ function reverseVowels(str) {
   return arr.join('');
 }
 
-console.log(reverseVowels("hello"))
+console.log(reverseVowels("hello")) // holle
 
 // ********************************************************************************************
 
 // Star pattern
+
 //   *
 //   **
 //   ***
 //   ****
+
 const makeStarPattern = () => {
   let str = "";
   for (let index = 0; index <= 4; index++) {
@@ -97,3 +101,6 @@ const makeStarPattern = () => {
 };
 
 makeStarPattern()
+
+// ********************************************************************************************
+
