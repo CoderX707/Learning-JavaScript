@@ -115,7 +115,48 @@ const makeStarPattern = () => {
 
 // IIFE without any extra brackets
 
-void function (date) {
+void (function (date) {
   console.log("IIFE without any extra brackets", date.getFullYear());
-}(new Date());
+})(new Date());
+
+// ********************************************************************************************
+
+// Difference between isNaN and Number.isNaN
+
+// isNaN: The global function isNaN converts the argument to a Number and returns true if
+// the resulting value is NaN.
+
+console.log(isNaN("Hello")); // true
+console.log(isNaN("10")); // false
+
+// Number.isNaN: This method does not convert the argument. But it returns true when the
+// type is a Number and value is NaN.
+
+console.log(Number.isNaN("Hello")); // false
+console.log(Number.isNaN(NaN)); // true
+
+// ********************************************************************************************
+
+// Define instance and non-instance properties
+
+// The Instance properties must be defined inside of class methods. For example, name and age
+// properties defined insider constructor as below,
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+// But Static(class) and prototype data properties must be defined outside of the ClassBody
+// declaration. Let's assign the age value for Person class as below,
+
+Person.staticAge = 35;
+Person.prototype.prototypeAge = 40;
+
+console.log(new Person('Hello',27).staticAge); // undefined 
+console.log(new Person('Hello',27).prototypeAge); // 40
+
+// ********************************************************************************************
 
