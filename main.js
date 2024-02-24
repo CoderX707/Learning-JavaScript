@@ -155,8 +155,91 @@ class Person {
 Person.staticAge = 35;
 Person.prototype.prototypeAge = 40;
 
-console.log(new Person('Hello',27).staticAge); // undefined 
-console.log(new Person('Hello',27).prototypeAge); // 40
+console.log(new Person("Hello", 27).staticAge); // undefined
+console.log(new Person("Hello", 27).prototypeAge); // 40
 
 // ********************************************************************************************
 
+// Differences between for...of and for...in statements
+
+// Both for...in and for...of statements iterate over js data structures.
+// The only difference is over what they iterate:
+// for..in iterates over all enumerable property keys of an object
+// for..of iterates over the values of an iterable object.
+
+const arr = ["a", "b", "c"];
+
+arr.newProp = "newValue";
+
+// key are the property keys (Object is iterable)
+for (let key in arr) {
+  console.log(key); // output - 0, 1, 2, newProp (keys)
+}
+
+// value are the property values (Object is not iterable)
+for (let value of arr) {
+  console.log(value); // output - a, b, b (values)
+}
+
+// ********************************************************************************************
+
+// Generator function
+
+// A generator function in JavaScript is a special type of function that can pause its execution
+// and yield multiple values one at a time. It's defined using the function* syntax and contains one or more yield expressions.
+
+// Different kinds of generators -
+// Generator function declaration:
+
+function* generatorFunction(value) {
+  yield value;
+  yield value + 10;
+  yield value + 20;
+}
+
+// Create a generator object
+const generator = generatorFunction(10);
+
+// Call the generator to get values one at a time
+console.log(generator.next().value); // Output: 10
+console.log(generator.next().value); // Output: 20
+console.log(generator.next().value); // Output: 30
+
+// Generator function expressions:
+const myGenFunc = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+const genObj1 = myGenFunc();
+
+// Generator method definitions in object literals:
+const myObj = {
+  *myGeneratorMethod() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+const genObj2 = myObj.myGeneratorMethod();
+
+// Generator method definitions in class:
+class MyClass {
+  *myGeneratorMethod() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+}
+const myObject = new MyClass();
+const genObj3 = myObject.myGeneratorMethod();
+
+// Generator as a computed property:
+const SomeObj = {
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+console.log(Array.from(SomeObj)); // [ 1, 2, 3 ]
