@@ -243,3 +243,25 @@ const SomeObj = {
   },
 };
 console.log(Array.from(SomeObj)); // [ 1, 2, 3 ]
+
+// ********************************************************************************************
+
+// Differences between spread operator and rest parameter
+
+// Rest parameter collects all remaining elements into an array. Whereas Spread operator allows
+// iterables( arrays / objects / strings ) to be expanded into single arguments/elements. i.e, Rest
+// parameter is opposite to the spread operator.
+
+// Spread Operator Example
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combinedArray = [...arr1, ...arr2]; // Spread operator used to concatenate arrays
+console.log(combinedArray); // Output: [1, 2, 3, 4, 5, 6]
+
+// Rest Parameter Example
+function sum(...numbers) { // Rest parameter collects multiple arguments into an array
+  return numbers.reduce((acc, val) => acc + val, 0);
+}
+console.log(sum(1, 2, 3, 4)); // Output: 10
+
+// ********************************************************************************************
